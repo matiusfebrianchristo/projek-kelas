@@ -1,0 +1,91 @@
+
+/*==================*/
+/* for fontawesome */
+
+	.sort {
+		position: absolute;
+		right: 10px;
+		height: 20px;
+		color: grey;
+		cursor: pointer;
+	}
+
+	.icon {
+		width: 25px;
+		height: 20px;
+		cursor: pointer;
+	}
+
+	.icon.edit {
+		color: #20c997!important;
+	}
+
+	.icon.delete {
+		color: red!important;
+	}
+
+	.icon.detail {
+		color: #00c1d6!important;
+	}
+
+	.icon.edit:hover {
+		color: #1db588!important;
+	}
+
+	.icon.delete:hover {
+		color: #d60000!important;
+	}
+
+	.icon.detail:hover {
+		color: #028896!important;
+	}
+
+/*===================*/
+/* for Tables */
+
+	.mw-10 {
+		min-width: 10rem!important; 
+	}
+
+	.mw-8 {
+		min-width: 8rem!important;
+	}
+
+	@media screen and (max-width: 1024px) {
+		.mw-absen {
+			min-width: 8rem;	
+		}
+	}
+
+
+	@media screen and (max-width: 768px) {
+		.mw-class {
+			min-width: 8rem;
+		}
+		.mw-absen {
+			min-width: 8rem;	
+		}
+	}
+
+	@media screen and (max-width: 425px) {
+		.mw-class {
+			min-width: 5rem;
+		}
+		.mw-absen {
+			min-width: 5.9rem;	
+		}
+	}
+
+	i {
+		color: #20c997!important;
+	}
+
+	.rounded-12 {
+		border-radius: 12px!important;
+	}
+
+	.coloums {
+		position: relative;
+		/*color: grey;*/
+	}
+
