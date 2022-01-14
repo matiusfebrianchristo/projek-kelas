@@ -24,9 +24,9 @@
 		$name = htmlspecialchars($data["nama"]);
 		$class = htmlspecialchars($data["kelas"]);
 		$absen = htmlspecialchars($data["absen"]);
-		$nisn = htmlspecialchars($data["absen"]);
+		$nisn = htmlspecialchars($data["nisn"]);
 
-		$query = "INSERT INTO siswa  VALUES ('$nisn', '$name', '$class', '$absen')";
+		$query = "INSERT INTO siswa (nisn, nama, kelas, nomor_absen) VALUES ('$nisn', '$name', '$class', '$absen')";
 
 		mysqli_query($conn, $query);
 		return mysqli_affected_rows($conn);
