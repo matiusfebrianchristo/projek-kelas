@@ -2,6 +2,8 @@
  include '_config/function.php';
 
  $list_student = query(constant("QUERY_SISWA"));
+
+ $list_kelas = query(constant("QUERY_KELAS"));
  
  $number = 1;
 ?>
@@ -45,6 +47,9 @@
 
 		<!-- ======================================================================= -->
    		<!-- List Students -->
+   		<?php if(count($list_kelas) == 0 ) : ?>
+   			<p class="text-danger text-center">Kelas belum ada. Tambahkan kelas terlebih dahulu.</p>
+   		<?php endif; ?>
 	  	<div class="table-responsive mt-3">
 		  <table class="table table-bordered table-striped text-center">
 		    <thead>
@@ -58,7 +63,8 @@
 		    	</tr>
 		    </thead>
 		    <tbody>
-		    	<?php  foreach ( $list_student as $data ) : ?>
+		    	<?php if (count($list_student) !== 0) {
+		    		foreach ( $list_student as $data ) :   ?>
 		    	<tr>
 		    		<td><?= $number++; ?></td>
 		    		<td class="text-start pl-1 "><?= $data['nama']; ?></td>
@@ -66,12 +72,16 @@
 		    		<td><?= $data['nama_kelas']; ?></td>
 		    		<td><?= $data['nisn']; ?></td>
 		    		<td>
-		    			<i class="fas fa-edit icon edit"></i>
-		    			<i class="fas fa-trash mx-md-2 icon delete"></i>
-		    			<i class="fas fa-info-circle icon detail"></i>
+		    			<a href="edit.php?nisn=<?= $data['nisn'] ?>" class="mx-md-3 "><i class="fas fa-edit icon edit"></i></a>
+		    			<a href="hapus.php?nisn=<?= $data['nisn'] ?>" class="mx-md-3 "><i class="fas fa-trash icon delete"></i></a>
 		    		</td>
 		    	</tr>
 		    	<?php endforeach ?>
+		    	<?php } else { ?>
+		    		<tr>
+		    			<td colspan="6" class="text-center">Data belum ada</td>
+		    		</tr>
+		    	<?php } ?>
 		    </tbody>
 		  </table>
 		</div>

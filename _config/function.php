@@ -33,5 +33,29 @@
 
 	}
 
+	// ==========================================
+	// Add Class
+	function addClass($data) {
+		global $conn;
+
+		$kelas = htmlspecialchars($data["kelas"]);
+
+		$query = "INSERT INTO kelas (id_kelas, nama_kelas) VALUES ('', '$kelas')";
+
+		mysqli_query($conn, $query);
+		return mysqli_affected_rows($conn);
+	}
+
+
+	// ===========================================
+	// Detele Student
+	function deleteStudent($nisn) {
+		global $conn;
+
+		$query = "DELETE FROM siswa WHERE nisn = $nisn";
+
+		mysqli_query($conn, $query);
+		return mysqli_affected_rows($conn);
+	}
 
 ?>

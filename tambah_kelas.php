@@ -1,3 +1,23 @@
+<?php
+
+	require "_config/function.php";
+
+	if (isset($_POST["tambah_kelas"])) {
+    // cek koneksi
+    if ( addClass($_POST) > 0 ) {
+      echo "<script> 
+      			alert('Kelas berhasil ditambahkan') ;
+  				document.location.href = 'index.php';
+  			</script>";
+    } else {
+      echo "<script> document.location.href = 'index.php' </script>";
+      echo mysqli_error($conn);
+    }
+  };
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,12 +44,13 @@
    			<!-- <i class="fas fa-arrow-left"></i> -->
    			<a href="/projectkelas"><h5><i class="fas fa-arrow-left"></i> Home</h5></a>
    		</div>
-   		<form>
+   		<form method="post" class="mt-2">
 		  <div class="mb-3">
 		    <label for="nama" class="form-label">kelas</label>
-		    <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
+		    <input type="text" name="kelas" class="form-control" id="nama" aria-describedby="emailHelp">
 		    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
 		  </div>
+		  <button type="submit" name="tambah_kelas" class="btn btn-primary rounded-12">Tambah  <i class="fas fa-plus-circle"></i></button>
 		</form>
 
    	</div>		
