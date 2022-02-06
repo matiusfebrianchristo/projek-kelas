@@ -1,13 +1,41 @@
 
+/* Global */
+	.font-11 {
+		font-size: 11px!important;	
+	}
+	.font-12 {
+		font-size: 12px!important;	
+	}
+
+	.ml-1 {
+		margin-left: .3rem!important;
+	}
+
+	.mb-0 {
+		margin-bottom: 0px !important;
+	}
+
+
+
 /*==================*/
 /* for fontawesome */
+	.admin .fas {
+		color: #fff!important;
+	}
+
+	.admin .back .fas {
+		color: #0d6efd!important;
+	}
 
 	.sort {
 		position: absolute;
 		right: 10px;
 		height: 20px;
-		color: grey;
 		cursor: pointer;
+	}
+
+	.fa-sort {
+		color: grey!important;
 	}
 
 	.icon {
@@ -88,4 +116,31 @@
 		position: relative;
 		/*color: grey;*/
 	}
+
+/* ========================== */
+/* for login */
+
+	.login-register .form {
+		width: 500px!important; 
+	}
+
+	.login-register .mt-5 {
+		margin-top: 4.5rem!important;
+	}
+
+	.login-register .password input, .login-register .confirmation input {
+		width: 90%;
+	}
+
+	.login-register .password .icon, .login-register .confirmation .icon {
+		width: 10%;
+		font-size: 30px;
+		color: #444!important;
+		margin-top: -10px; 
+	}
+
+	.login-register .fas {
+		color: #fff!important;
+	}
+
 

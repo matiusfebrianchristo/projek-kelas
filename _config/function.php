@@ -36,6 +36,34 @@
 	}
 
 	// ========================================
+	// Untuk Mendaftar
+	function addUser($data) {
+
+		// Untuk mengambil variabel koneksi yang berada di luar function
+		global $conn;
+
+		// Mendefiniskan untuk inputan Nama, username, email, dan password
+		// $data adalah argument function dimana nantinya dapat digunakan untuk mengambil data saat function di panggil
+		$name = $data["nama"];
+		$username = strtolower($data["username"]);
+		$email = strtolower($data["email"]);
+		$password = $data["password"];
+
+		// Mendefinisikan perintah database untuk menambahkan data ke tabel User
+		// INSERT INTO nama_tabel (nama_kolom) VALUES (data_yang_akan_diisikan)
+		$query = "INSERT INTO user (nama, username, email, password) VALUES ('$name', '$username', '$email', '$password')";
+
+		// Untuk menjalankan atau mengeksekusi perintah mysql yang telah di definisikan tadi
+		// mysqli_query(konek, perintah)
+		mysqli_query($conn, $query);
+
+		// Mengembalikan nilai berupa angka dimana jika berhasil maka nilai yg dikembalikan adalah 1 jika gagal -1
+		return mysqli_affected_rows($conn);
+		
+	} 
+
+
+	// ========================================
 	// Function untuk Menambahkan Siswa
 	function addStudent($data) {
 
@@ -76,7 +104,7 @@
 
 		// Mendefinisikan perintah database untuk menambahkan data ke dalam Database
 		// INSERT INTO siswa (nama_tabel) VALUES (data_yang_akan_diisikan)
-		$query = "INSERT INTO kelas (id_kelas, nama_kelas) VALUES ('', '$kelas')";
+		$query = "INSERT INTO kelas (nama_kelas) VALUES ('$kelas')";
 
 		// Untuk menjalan atau mengeksekusi perintah mysql yang telah di definisikan tadi 
 		// mysqli_query(koneksi, perintah)
@@ -130,7 +158,7 @@
 
 	//=======================================================
 	// Untuk update atau edit data Siswa
-	function updateSiswa($data) {
+	function updateSiswa($data, $get, $old) {
 		// Untuk mengambil Variabel Koneksi yang berada di luar function 
 		global $conn;
 
@@ -142,7 +170,7 @@
 
 		// Mendefinisikan perintah database untuk update data dari Database
 		// UPDATE nama_tabel SET nama_attribut = data_yang_akan_diisikan WHERE nama_attribut = data_yang_akan_diisikan
-		$query = "UPDATE siswa SET nama = '$nama', kelas = '$kelas', nomor_absen = '$nomor_absen' WHERE nisn = '$nisn'";
+		$query = "UPDATE siswa SET nisn='$nisn', nama = '$nama', kelas = '$kelas', nomor_absen = '$nomor_absen' WHERE nisn = '$get'";
 
 		// Untuk menjalan atau mengeksekusi perintah mysql yang telah di definisikan tadi
 		// mysqli_query(variabel_koneksi, perintah)
@@ -150,11 +178,17 @@
 		// var_dump($data);
 
 		if (!$data) {
-			return "Error : " . mysqli_error($data);
+			return die("Error : " . mysqli_error($data));
 		}
 
+		// var_dump($conn);
+
 		// Mengembalikan nilai dari variabel $kelas yang berisi data dari Database
-		return mysqli_affected_rows($conn);
+		if ($old == $data) {
+			return 1;
+		} else {
+			return mysqli_affected_rows($conn);
+		}
 	}
 
 ?>
